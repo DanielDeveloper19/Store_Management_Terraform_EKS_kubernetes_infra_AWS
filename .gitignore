@@ -1,0 +1,15 @@
+###Terraform ###
+# Ignorar el directorio de trabajo local de Terraform
+terraform/.terraform/
+
+# Ignorar archivos de estado local
+terraform/*.tfstate
+terraform/*.tfstate.backup
+terraform/*.tfstate.lock.info
+
+# Ignorar archivos de variables con secretos
+terraform/*.tfvars
+terraform/*.tfvars.json
+
+# Ignorar registros de fallos
+terraform/crash.log
