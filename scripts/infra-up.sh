@@ -45,6 +45,6 @@ kubectl wait --for=condition=available --timeout=300s deployment/argocd-server -
 # --- 4. Deploying the GitOps Application ---
 echo "📦 Creating the Argo CD Application..."
 # This points Argo CD to your MANIFEST repository
-kubectl apply -f ./argocd/application.yaml
+kubectl apply -f ../ArgoCd/helm-application.yaml
 
 echo "✅ Environment is UP! Access your API via the LoadBalancer URL."
