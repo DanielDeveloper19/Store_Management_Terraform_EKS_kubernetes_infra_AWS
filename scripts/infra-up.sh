@@ -24,9 +24,19 @@ terraform apply -auto-approve -parallelism=20
 
 # --- 2. Kubernetes Context Setup ---
 echo "🔗 Connecting to EKS Cluster..."
-# We extract the cluster name and region from Terraform outputs to avoid hardcoding
+# We extract the cluster name and region AND database credentials from Terraform outputs to avoid hardcoding
 CLUSTER_NAME=$(terraform output -raw eks_cluster_name)
 REGION=$(terraform output -raw region)
+DB_URL=$(terraform output -raw db_endpoint)
+DB_USER=$(terraform output -raw db_username)
+DB_PASS=$(terraform output -raw db_password)
+
+# Create the DB Secret in K8s
+kubectl create secret generic rds-db-credentials \
+  --from-literal=url="jdbc:mysql://${DB_URL}:3306/store_management" \
+  --from-literal=username=$DB_USER \
+  --from-literal=password=$DB_PASS \
+  -n store-management --dry-run=client -o yaml | kubectl apply -f -
 
 aws eks update-kubeconfig --region $REGION --name $CLUSTER_NAME
 

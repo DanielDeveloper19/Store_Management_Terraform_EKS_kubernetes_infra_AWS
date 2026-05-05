@@ -27,3 +27,28 @@ resource "aws_security_group_rule" "all_worker_mgmt_egress" {
   type              = "egress"
   cidr_blocks       = ["0.0.0.0/0"]
 }
+
+#-----------------------------------------------------
+
+resource "aws_security_group" "rds_db_sg" {
+  name        = "store-management-rds-db-sg"
+  description = "Allow inbound traffic from EKS worker nodes only"
+  vpc_id      = module.vpc.vpc_id # Your existing VPC ID
+
+  # Inbound rule: Only allow EKS nodes to connect to MySQL
+  ingress {
+    description     = "Allow MySQL traffic from EKS"
+    from_port       = 3306
+    to_port         = 3306
+    protocol        = "tcp"
+    security_groups = [aws_security_group.all_worker_mgmt.id] # Your EKS Node Security Group ID
+  }
+
+  # Outbound rule: Allow RDS to send responses back out
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}

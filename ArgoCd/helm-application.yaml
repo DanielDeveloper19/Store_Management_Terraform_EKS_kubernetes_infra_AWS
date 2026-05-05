@@ -1,8 +1,8 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: StoreManagement-GradeSubmission-Helm
-  namespace: StoreManagement
+  name: argocd-store-management
+  namespace: argocd
 spec:
   project: default
   source:
@@ -14,7 +14,7 @@ spec:
         - values.yaml
   destination:
     server: https://kubernetes.default.svc
-    namespace: grade-helm-demo
+    namespace: store-management
   syncPolicy:
     automated:
       prune: true

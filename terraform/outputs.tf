@@ -28,6 +28,14 @@ output "oidc_provider_arn" {
   value = module.eks.oidc_provider_arn
 }
 
+# DB Outputs
+output "db_endpoint" { value = aws_db_instance.default.endpoint }
+output "db_username" { value = aws_db_instance.default.username }
+output "db_password" { 
+  value     = aws_db_instance.default.password 
+  sensitive = true 
+}
+
 #output "zz_update_kubeconfig_command" {
   # value = "aws eks update-kubeconfig --name " + module.eks.cluster_id
 #  value = format("%s %s %s %s", "aws eks update-kubeconfig --name", module.eks.cluster_id, "--region", var.aws_region)
