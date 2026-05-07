@@ -13,7 +13,7 @@ This project is a technical showcase of the "Conqueror Mindset" in software engi
 The entire platform—from the VPC networking to the live application—is provisioned using a single orchestration script. This eliminates manual error and reduces environment setup time from 4 hours to 20 minutes.
 
 🛠️ Quick Start
-Clone the repository: git clone https://github.com/DanielDeveloper19/Terraform_EKS_Lab.git
+Clone the repository: git clone https://github.com/DanielDeveloper19/Store_Management_Terraform_EKS_kubernetes_infra_AWS.git
 
 Configure AWS Credentials: aws configure
 
