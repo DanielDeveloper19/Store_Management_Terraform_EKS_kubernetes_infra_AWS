@@ -7,3 +7,27 @@ A Production-Grade, Self-Healing AWS Ecosystem for Java Microservices.
 
 🎯 The Vision
 This project is a technical showcase of the "Conqueror Mindset" in software engineering—transforming manual infrastructure complexity into a single, automated, and observable system. It provides a "One-Click" solution to deploy a highly available, secure, and production-ready environment on AWS using industry-standard GitOps principles.
+
+------------------------------------
+⚡The One-Click Command Center
+The entire platform—from the VPC networking to the live application—is provisioned using a single orchestration script. This eliminates manual error and reduces environment setup time from 4 hours to 20 minutes.
+
+🛠️ Quick Start
+Clone the repository: git clone https://github.com/DanielDeveloper19/Terraform_EKS_Lab.git
+
+Configure AWS Credentials: aws configure
+
+Execute the Engine:
+Bash
+chmod +x scripts/infra-up.sh
+./scripts/infra-up.sh
+-----------------------------------
+What happens behind the scenes?
+
+Terraform initializes and provisions the multi-AZ network and EKS cluster.
+
+kubectl context is automatically updated with cluster credentials.
+
+AWS Load Balancer Controller is installed to manage external traffic.
+
+ArgoCD is deployed and configured to "pull" the latest manifests from Git.
