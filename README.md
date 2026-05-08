@@ -65,6 +65,7 @@ Image Scanning: The CI pipeline includes Trivy vulnerability scans and SonarQube
 ------------------
 
 🧠 Engineering Decisions & Trade-offs
+
 Why AWS EKS over EC2? To leverage managed control plans and auto-scaling capabilities, allowing the team to focus on application logic rather than server maintenance.
 
 Why db.t4g.micro? Chosen for its Graviton2 performance efficiency. It provides 20% better price-performance than Intel-based instances for our development workloads.
