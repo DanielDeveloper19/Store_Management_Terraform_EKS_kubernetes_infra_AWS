@@ -81,6 +81,6 @@ Why NAT Gateways? To allow private pods (EKS/RDS) to perform outbound updates wh
 
 💻Business Logic(Java Spring Boot Application):https://github.com/DanielDeveloper19/store_management.git
 
-GitOps State(Helm Charts & Kubernetes Manifests): https://github.com/DanielDeveloper19/Store_Management_KubernetesManifests.git
+⚓GitOps State(Helm Charts & Kubernetes Manifests): https://github.com/DanielDeveloper19/Store_Management_KubernetesManifests.git
 
 
