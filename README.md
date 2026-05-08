@@ -13,23 +13,31 @@ This project is a technical showcase of the "Conqueror Mindset" in software engi
 The entire platform—from the VPC networking to the live application—is provisioned using a single orchestration script. This eliminates manual error and reduces environment setup time from 4 hours to 20 minutes.
 
 🛠️ Quick Start
-Clone the repository: git clone https://github.com/DanielDeveloper19/Store_Management_Terraform_EKS_kubernetes_infra_AWS.git
+- Fork these two Github repositories, are the Java source code and the manifests Repo:
+  https://github.com/DanielDeveloper19/store_management.git
+  https://github.com/DanielDeveloper19/Store_Management_KubernetesManifests.git
 
-Configure AWS Credentials: aws configure
+🛠️ In your local machine:
+- Clone the Infrastructure repository:
+  git clone https://github.com/DanielDeveloper19/Store_Management_Terraform_EKS_kubernetes_infra_AWS.git
 
-Execute the Engine:
-Bash
-
+- Configure AWS Credentials: aws configure
+  install Terraform
+- There are a couple of variables you need to modify in the scripts you cloned; for example, changing a variable to point to the manifest repository you forked, or in the CI pipeline in the Java source code, all of that is really straightforward.
+- Execute the Engine:
+  Bash
 chmod +x scripts/infra-up.sh
 ./scripts/infra-up.sh
-
 -----------------------------------
 What happens behind the scenes?
 
-Terraform initializes and provisions the multi-AZ network and EKS cluster.
+Terraform initializes and provisions the multi-AZ network and EKS cluster in your AWS account.
 
 kubectl context is automatically updated with cluster credentials.
 
 AWS Load Balancer Controller is installed to manage external traffic.
 
 ArgoCD is deployed and configured to "pull" the latest manifests from Git.
+Now you have your Java application deployed in a production grade AWS Ecosystem with EKS Kubernetes and GitOps workflow.
+
+----------------------
