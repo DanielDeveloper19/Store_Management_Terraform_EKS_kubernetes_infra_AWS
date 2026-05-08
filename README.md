@@ -41,3 +41,5 @@ ArgoCD is deployed and configured to "pull" the latest manifests from Git.
 Now you have your Java application deployed in a production grade AWS Ecosystem with EKS Kubernetes and GitOps workflow.
 
 ----------------------
+
+ComponentResponsibilityRepository LinkCloud EngineTerraform, VPC, EKS, RDS[Current Repo]Business LogicJava Spring Boot Application[Link to Source Repo]GitOps StateHelm Charts & K8s Manifests[Link to Manifests Repo]
