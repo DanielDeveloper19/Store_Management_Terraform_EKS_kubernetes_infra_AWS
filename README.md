@@ -5,85 +5,86 @@ A Production-Grade, Self-Healing AWS Ecosystem for Java Microservices.
 <img width="1408" height="768" alt="Gemini_Generated_Image_eqn1h6eqn1h6eqn1" src="https://github.com/user-attachments/assets/8b30d1c7-62ca-4522-9e54-28cf7d6045ad" />
 <img width="1408" height="768" alt="Gemini_Generated_Image_vcd3b1vcd3b1vcd3" src="https://github.com/user-attachments/assets/2a883864-b132-4082-bb12-7103ed9163d3" />
 
-🎯 The Vision
-This project is a technical showcase of the "Conqueror Mindset" in software engineering—transforming manual infrastructure complexity into a single, automated, and observable system. It provides a "One-Click" solution to deploy a highly available, secure, and production-ready environment on AWS using industry-standard GitOps principles.
+# ⛅ Alive Systems: Cloud Engine
+> **Enterprise-Scale Infrastructure-as-Code & GitOps Orchestration.**
 
-------------------------------------
-⚡The One-Click Command Center
+[![Terraform](https://img.shields.io/badge/Terraform-7B42BC?style=for-the-badge&logo=terraform&logoColor=white)](https://www.terraform.io/)
+[![AWS](https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=amazon-aws&logoColor=white)](https://aws.amazon.com/)
+[![Kubernetes](https://img.shields.io/badge/Kubernetes-326CE5?style=for-the-badge&logo=kubernetes&logoColor=white)](https://kubernetes.io/)
+[![ArgoCD](https://img.shields.io/badge/ArgoCD-EF7B4D?style=for-the-badge&logo=argo&logoColor=white)](https://argoproj.github.io/cd/)
 
-The entire platform—from the VPC networking to the live application—is provisioned using a single orchestration script. This eliminates manual error and reduces environment setup time from 4 hours to 20 minutes.
+### 🎯 The Vision
+This project is a technical showcase of the **"Conqueror Mindset"** in software engineering—transforming manual infrastructure complexity into a single, automated, and observable system. It provides a **"One-Click"** solution to deploy a highly available, secure, and production-ready environment on AWS using industry-standard GitOps principles.
 
-🛠️ Quick Start
-- Fork these two Github repositories, are the Java source code and the manifests Repo:
-  https://github.com/DanielDeveloper19/store_management.git
-  https://github.com/DanielDeveloper19/Store_Management_KubernetesManifests.git
+---
 
-🛠️ In your local machine:
-- Clone the Infrastructure repository:
-  git clone https://github.com/DanielDeveloper19/Store_Management_Terraform_EKS_kubernetes_infra_AWS.git
+## ⚡ The One-Click Command Center
+The entire platform—from the VPC networking to the live application—is provisioned using a single orchestration script. This eliminates manual error and reduces environment setup time from **4 hours to 20 minutes.**
 
-- Configure AWS Credentials: aws configure
-  install Terraform
-- There are a couple of variables you need to modify in the scripts you cloned; for example, changing a variable to point to the manifest repository you forked, or in the CI pipeline in the Java source code, all of that is really straightforward.
-- Execute the Engine:
-  Bash
-chmod +x scripts/infra-up.sh
-./scripts/infra-up.sh
------------------------------------
-🕵️‍♀️What happens behind the scenes?
+### 🛠️ Quick Start
+To deploy the ecosystem, you will need to fork the supporting repositories first:
+* **Java Source Code:** [store_management](https://github.com/DanielDeveloper19/store_management.git)
+* **Manifests Repo:** [Store_Management_KubernetesManifests](https://github.com/DanielDeveloper19/Store_Management_KubernetesManifests.git)
 
-Terraform initializes and provisions the multi-AZ network and EKS cluster in your AWS account.
+#### 💻 Local Setup & Execution
+1.  **Clone this Engine:**
+    ```bash
+    git clone [https://github.com/DanielDeveloper19/Store_Management_Terraform_EKS_kubernetes_infra_AWS.git](https://github.com/DanielDeveloper19/Store_Management_Terraform_EKS_kubernetes_infra_AWS.git)
+    ```
+2.  **Initialize Environment:**
+    * Install **Terraform** and configure your **AWS CLI** (`aws configure`).
+    * Update variables in `infra-up.sh` to point to your forked repositories.
+3.  **Execute the Engine:**
+    ```bash
+    chmod +x scripts/infra-up.sh
+    ./scripts/infra-up.sh
+    ```
 
-kubectl context is automatically updated with cluster credentials.
+---
 
-AWS Load Balancer Controller is installed to manage external traffic.
+## 🕵️‍♀️ What happens behind the scenes?
+1.  **Infrastructure Provisioning:** Terraform initializes and provisions a multi-AZ VPC, EKS Cluster, and RDS instance.
+2.  **Context Synchronization:** The `kubectl` context is automatically updated with cluster credentials.
+3.  **Ingress Management:** The **AWS Load Balancer Controller** is installed to manage external traffic.
+4.  **GitOps Initialization:** **ArgoCD** is deployed and configured to "pull" the latest manifests, bringing the Java Spring Boot application to life.
 
-ArgoCD is deployed and configured to "pull" the latest manifests from Git.
-Now you have your Java Spring Boot application deployed in a production grade AWS Ecosystem with EKS Kubernetes and GitOps workflow.
+---
 
-----------------------
+## 🏗️ Core Architectural Pillars
 
-🏗️ Core Architectural Pillars
-1. Resilient Infrastructure-as-Code (Terraform)
-Multi-AZ VPC: Spans across 3 AWS Availability Zones for high availability.
+### 🔒 Resilient Infrastructure-as-Code (Terraform)
+* **Multi-AZ VPC:** Spans across **3 AWS Availability Zones** for high availability.
+* **Network Isolation:** Public subnets house the ALB and NAT Gateways; **EKS Nodes and RDS reside in Private Subnets**, unreachable from the public internet.
+* **Compute:** Managed Amazon EKS cluster using `t3.medium` node groups for an optimal balance of memory and performance.
 
-Network Isolation: Public subnets house the ALB and NAT Gateways, while EKS Nodes and RDS reside in Private Subnets , unreachable from the public internet.
+### 🐙 Zero-Touch GitOps (ArgoCD & Helm)
+* **Pull-Based Deployment:** ArgoCD continuously monitors the Manifests Repo for changes.
+* **Self-Healing:** Manual cluster changes are automatically reconciled back to the Git source of truth.
+* **Automated Sync:** Integrated synchronization policy deploys new versions immediately upon Git push.
 
-Compute: Managed Amazon EKS cluster using t3.medium node groups for an optimal balance of memory, performance and cost.
+### 🛡️ Shift-Left Security & Observability
+* **Database Security:** MySQL RDS is protected by strict Security Groups, allowing traffic **only** from EKS nodes on port 3306.
+* **Quality Gates:** The CI pipeline includes **Trivy** vulnerability scans and **SonarQube** analysis.
+* **Full-Stack Telemetry:** Integrated **Prometheus and Grafana** provide 24/7 health monitoring for all cluster components.
 
-2. Zero-Touch GitOps (ArgoCD & Helm)
-Pull-Based Deployment: ArgoCD continuously monitors the [Manifests Repo] for changes.
+---
 
-Self-Healing: If manual changes are made to the Kubernetes cluster, ArgoCD automatically reconciles the state back to the Git source of truth.
+## 🧠 Engineering Decisions & Trade-offs
+> **Senior Insight:** "The best architecture isn't the most complex; it's the one that balances reliability with cost and maintainability."
 
-Automated Sync: Integrated synchronization policy that deploys new versions as soon as they are pushed to Git.
+* **AWS EKS vs. EC2:** Chosen to leverage managed control planes and auto-scaling, allowing focus on application logic over server maintenance.
+* **db.t4g.micro:** Selected for **Graviton2 performance efficiency**, providing 20% better price-performance than Intel-based instances.
+* **NAT Gateways:** Implemented to allow private pods (EKS/RDS) outbound updates while blocking all inbound threats.
 
-3. Shift-Left Security & Networking
-Database Security: MySQL RDS is protected by strict Security Groups, allowing traffic only from the EKS nodes on port 3306.
+---
 
-Image Scanning: The CI pipeline includes Trivy vulnerability scans and SonarQube, automated tests and code quality gates before images reach the registry.
+## 🤖 Project Ecosystem Table
 
-Instrumented full-stack observability with Prometheus and Grafana, providing real-time telemetry and 24/7 health 
-monitoring for all cluster components. 
+| Component | Responsibility | Repository Link |
+| :--- | :--- | :--- |
+| **⛅ Cloud Engine** | Terraform, VPC, EKS, RDS | [Infrastructure Repo](https://github.com/DanielDeveloper19/Store_Management_Terraform_EKS_kubernetes_infra_AWS.git) |
+| **💻 Business Logic** | Java Spring Boot Application | [Source Code Repo](https://github.com/DanielDeveloper19/store_management.git) |
+| **⚓ GitOps State** | Helm Charts & K8s Manifests | [Manifests Repo](https://github.com/DanielDeveloper19/Store_Management_KubernetesManifests.git) |
 
-------------------
-
-🧠 Engineering Decisions & Trade-offs
-
-Why AWS EKS over EC2? To leverage managed control plans and auto-scaling capabilities, allowing the team to focus on application logic rather than server maintenance.
-
-Why db.t4g.micro? Chosen for its Graviton2 performance efficiency. It provides 20% better price-performance than Intel-based instances for our development workloads.
-
-Why NAT Gateways? To allow private pods (EKS/RDS) to perform outbound updates while remaining protected from inbound threats.
-
-------------
-
-🤖Project Ecosystem Table:
-
-⛅Cloud Engine(Terraform, VPC, EKS, RDS): https://github.com/DanielDeveloper19/Store_Management_Terraform_EKS_kubernetes_infra_AWS.git
-
-💻Business Logic(Java Spring Boot Application):https://github.com/DanielDeveloper19/store_management.git
-
-⚓GitOps State(Helm Charts & Kubernetes Manifests): https://github.com/DanielDeveloper19/Store_Management_KubernetesManifests.git
-
-
+---
+*Built by Daniel Montoya — Alive Systems Lab.*
