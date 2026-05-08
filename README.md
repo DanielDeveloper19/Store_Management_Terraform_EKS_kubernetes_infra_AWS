@@ -63,6 +63,9 @@ Database Security: MySQL RDS is protected by strict Security Groups, allowing tr
 
 Image Scanning: The CI pipeline includes Trivy vulnerability scans and SonarQube, automated tests and code quality gates before images reach the registry.
 
+Instrumented full-stack observability with Prometheus and Grafana, providing real-time telemetry and 24/7 health 
+monitoring for all cluster components. 
+
 ------------------
 
 🧠 Engineering Decisions & Trade-offs
