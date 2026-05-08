@@ -19,6 +19,7 @@ Configure AWS Credentials: aws configure
 
 Execute the Engine:
 Bash
+
 chmod +x scripts/infra-up.sh
 ./scripts/infra-up.sh
 
