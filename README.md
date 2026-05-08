@@ -29,7 +29,7 @@ The entire platform—from the VPC networking to the live application—is provi
 chmod +x scripts/infra-up.sh
 ./scripts/infra-up.sh
 -----------------------------------
-What happens behind the scenes?
+🕵️‍♀️What happens behind the scenes?
 
 Terraform initializes and provisions the multi-AZ network and EKS cluster in your AWS account.
 
@@ -42,6 +42,27 @@ Now you have your Java application deployed in a production grade AWS Ecosystem 
 
 ----------------------
 
+🏗️ Core Architectural Pillars
+1. Resilient Infrastructure-as-Code (Terraform)
+Multi-AZ VPC: Spans across 3 Availability Zones for high availability.
+
+Network Isolation: Public subnets house the ALB and NAT Gateways, while EKS Nodes and RDS reside in Private Subnets , unreachable from the public internet.
+
+Compute: Managed Amazon EKS cluster using t3.medium node groups for an optimal balance of memory, performance and cost.
+
+2. Zero-Touch GitOps (ArgoCD & Helm)
+Pull-Based Deployment: ArgoCD continuously monitors the [Manifests Repo] for changes.
+
+Self-Healing: If manual changes are made to the cluster, ArgoCD automatically reconciles the state back to the Git source of truth.
+
+Automated Sync: Integrated synchronization policy that deploys new versions as soon as they are pushed to Git.
+
+3. Shift-Left Security & Networking
+Database Security: MySQL RDS is protected by strict Security Groups, allowing traffic only from the EKS nodes on port 3306.
+
+Image Scanning: The CI pipeline includes Trivy vulnerability scans and SonarQube, automated tests and code quality gates before images reach the registry.
+
+------------------
 🤖Project Ecosystem Table:
 
 ⛅Cloud Engine(Terraform, VPC, EKS, RDS): https://github.com/DanielDeveloper19/Store_Management_Terraform_EKS_kubernetes_infra_AWS.git
