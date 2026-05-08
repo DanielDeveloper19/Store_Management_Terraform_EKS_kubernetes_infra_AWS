@@ -78,7 +78,9 @@ Why NAT Gateways? To allow private pods (EKS/RDS) to perform outbound updates wh
 🤖Project Ecosystem Table:
 
 ⛅Cloud Engine(Terraform, VPC, EKS, RDS): https://github.com/DanielDeveloper19/Store_Management_Terraform_EKS_kubernetes_infra_AWS.git
+
 💻Business Logic(Java Spring Boot Application):https://github.com/DanielDeveloper19/store_management.git
+
 GitOps State(Helm Charts & Kubernetes Manifests): https://github.com/DanielDeveloper19/Store_Management_KubernetesManifests.git
 
 
