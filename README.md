@@ -63,6 +63,16 @@ Database Security: MySQL RDS is protected by strict Security Groups, allowing tr
 Image Scanning: The CI pipeline includes Trivy vulnerability scans and SonarQube, automated tests and code quality gates before images reach the registry.
 
 ------------------
+
+🧠 Engineering Decisions & Trade-offs
+Why AWS EKS over EC2? To leverage managed control plans and auto-scaling capabilities, allowing the team to focus on application logic rather than server maintenance.
+
+Why db.t4g.micro? Chosen for its Graviton2 performance efficiency. It provides 20% better price-performance than Intel-based instances for our development workloads.
+
+Why NAT Gateways? To allow private pods (EKS/RDS) to perform outbound updates while remaining protected from inbound threats.
+
+------------
+
 🤖Project Ecosystem Table:
 
 ⛅Cloud Engine(Terraform, VPC, EKS, RDS): https://github.com/DanielDeveloper19/Store_Management_Terraform_EKS_kubernetes_infra_AWS.git
