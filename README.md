@@ -39,13 +39,13 @@ kubectl context is automatically updated with cluster credentials.
 AWS Load Balancer Controller is installed to manage external traffic.
 
 ArgoCD is deployed and configured to "pull" the latest manifests from Git.
-Now you have your Java application deployed in a production grade AWS Ecosystem with EKS Kubernetes and GitOps workflow.
+Now you have your Java Spring Boot application deployed in a production grade AWS Ecosystem with EKS Kubernetes and GitOps workflow.
 
 ----------------------
 
 🏗️ Core Architectural Pillars
 1. Resilient Infrastructure-as-Code (Terraform)
-Multi-AZ VPC: Spans across 3 Availability Zones for high availability.
+Multi-AZ VPC: Spans across 3 AWS Availability Zones for high availability.
 
 Network Isolation: Public subnets house the ALB and NAT Gateways, while EKS Nodes and RDS reside in Private Subnets , unreachable from the public internet.
 
@@ -54,7 +54,7 @@ Compute: Managed Amazon EKS cluster using t3.medium node groups for an optimal b
 2. Zero-Touch GitOps (ArgoCD & Helm)
 Pull-Based Deployment: ArgoCD continuously monitors the [Manifests Repo] for changes.
 
-Self-Healing: If manual changes are made to the cluster, ArgoCD automatically reconciles the state back to the Git source of truth.
+Self-Healing: If manual changes are made to the Kubernetes cluster, ArgoCD automatically reconciles the state back to the Git source of truth.
 
 Automated Sync: Integrated synchronization policy that deploys new versions as soon as they are pushed to Git.
 
