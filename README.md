@@ -21,6 +21,7 @@ Execute the Engine:
 Bash
 chmod +x scripts/infra-up.sh
 ./scripts/infra-up.sh
+
 -----------------------------------
 What happens behind the scenes?
 
