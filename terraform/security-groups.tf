@@ -28,6 +28,20 @@ resource "aws_security_group_rule" "all_worker_mgmt_egress" {
   cidr_blocks       = ["0.0.0.0/0"]
 }
 
+resource "aws_security_group_rule" "control_plane_to_webhook" {
+  description              = "Allow EKS Control Plane to reach ALB Controller Webhook"
+  from_port                = 9443
+  to_port                  = 9443
+  protocol                 = "tcp"
+  security_group_id        = aws_security_group.all_worker_mgmt.id
+  type                     = "ingress"
+  
+  # This targets the specific security group of your cluster 
+  # rather than a wide IP range.
+  source_security_group_id = module.eks.cluster_primary_security_group_id 
+}
+
+
 #-----------------------------------------------------
 
 resource "aws_security_group" "rds_db_sg" {

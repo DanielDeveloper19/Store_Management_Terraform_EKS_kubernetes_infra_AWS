@@ -15,9 +15,12 @@ resource "aws_db_instance" "mysql" {
 
 resource "aws_db_subnet_group" "rds_subnet_group" {
   name       = "store-management-rds-subnet-group"
-  subnet_ids = ["10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24"] # Pass your 3 existing private subnet IDs here
+  
+  # This tells Terraform to pull the list of IDs directly from the VPC module
+  subnet_ids = module.vpc.private_subnets
 
   tags = {
     Name = "Store Management RDS Subnet Group"
   }
+
 }

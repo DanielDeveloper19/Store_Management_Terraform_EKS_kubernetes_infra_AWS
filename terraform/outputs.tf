@@ -29,10 +29,10 @@ output "oidc_provider_arn" {
 }
 
 # DB Outputs
-output "db_endpoint" { value = aws_db_instance.default.endpoint }
-output "db_username" { value = aws_db_instance.default.username }
+output "db_endpoint" { value = aws_db_instance.mysql.endpoint }
+output "db_username" { value = aws_db_instance.mysql.username }
 output "db_password" { 
-  value     = aws_db_instance.default.password 
+  value     = aws_db_instance.mysql.password 
   sensitive = true 
 }
 
